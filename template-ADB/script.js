@@ -266,7 +266,11 @@ function setMode(m){
   const isCd = (m === 'countdown');
   sliderEl.classList.toggle('right', isCd);
   document.querySelectorAll('.tabs button')
-    .forEach(b => b.classList.toggle('active', b.dataset.mode === m));
+    .forEach(b => {
+      const on = b.dataset.mode === m;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
   panelSw.hidden = isCd;
   panelCd.hidden = !isCd;
   csEl.classList.toggle('hidden', isCd);
@@ -311,6 +315,9 @@ document.querySelectorAll('.tabs button').forEach(b =>
 muteBtn.addEventListener('click', () => {
   muted = !muted;
   muteBtn.classList.toggle('muted', muted);
+  const label = muted ? 'Activar sonido' : 'Silenciar sonido';
+  muteBtn.setAttribute('aria-label', label);
+  muteBtn.setAttribute('title', label);
   if (!muted) beep(1);
 });
 
