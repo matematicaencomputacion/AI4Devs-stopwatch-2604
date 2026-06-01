@@ -216,4 +216,8 @@ header{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
   .clock.urgent{animation:none}
   .clock.finished .flip span{animation:none}
   .colon.blink span{animation:none;opacity:1}
+  .lap{animation:none}
+  .flip .fold{display:none}                    /* revela el dígito nuevo del .upper */
+  .flip .unfold{animation:none;transform:none} /* aplana, muestra el nuevo abajo */
+  .tab-slider{transition:none}                 /* corta el deslizamiento de la pastilla */
 }
